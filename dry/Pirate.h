@@ -19,16 +19,13 @@ class Pirate {
 private:
     string name;
     int bounty;
+    DEVIL_FRUIT devilFruit;
 
 public:
 
     Pirate();
 
-    Pirate(const string& name, int bounty);
-    DEVIL_FRUIT devilFruit;
-
-public:
-    Pirate(const string& name, DEVIL_FRUIT devilFruit = DEVIL_FRUIT::NONE);
+    Pirate(const string& name, int bounty, DEVIL_FRUIT devilFruit = DEVIL_FRUIT::NONE);
 
     ~Pirate() = default;
 

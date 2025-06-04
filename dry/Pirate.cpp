@@ -1,12 +1,20 @@
 
 #include "Pirate.h"
 
+const char* const devilFruitNames[] = {
+    "Gum Gum",
+    "Smoke Smoke",
+    "Flame Flame",
+    "Rumble Rumble",
+    "String String",
+    "Ice Ice",
+    "None"
+};
+
 Pirate::Pirate() = default;
 
 
-Pirate::Pirate(const string& name, int bounty) : name(name), bounty(bounty) {} 
-Pirate::Pirate(const string& name, DEVIL_FRUIT devilFruit): name(name), devilFruit(devilFruit) {}
-
+Pirate::Pirate(const string& name, int bounty, DEVIL_FRUIT devilFruit) : name(name), bounty(bounty), devilFruit(devilFruit) {} 
 
 void Pirate::setName(const string& name){
     this->name = name;
@@ -33,17 +41,6 @@ int Pirate::getBounty() const {
 DEVIL_FRUIT Pirate::getDevilFruit(){
     return devilFruit;
 }
-
-
-const char* const devilFruitNames[] = {
-    "Gum Gum",
-    "Smoke Smoke",
-    "Flame Flame",
-    "Rumble Rumble",
-    "String String",
-    "Ice Ice",
-    "None"
-};
 
 std::ostream &operator<<(std::ostream &os, const Pirate &pirate){
     os << pirate.name;
