@@ -23,7 +23,7 @@ class Matrix {
 
 public:
     // constructors and assignment
-    Matrix() : m_data(nullptr), m_rows(0), m_columns(0) {}
+    Matrix();
     Matrix(unsigned int rows, unsigned int columns, int initiationNumber = 0);
     ~Matrix();
     Matrix(const Matrix& otherMatrix);

@@ -4,6 +4,8 @@
 
 #include "Matrix.h"
 
+Matrix::Matrix() : m_data(nullptr), m_rows(0), m_columns(0) {}
+
 Matrix::Matrix(unsigned int rows, unsigned int columns, int initiationNumber) : m_rows(rows), m_columns(columns) {
     if (!rows || !columns) {
         m_rows = 0;
