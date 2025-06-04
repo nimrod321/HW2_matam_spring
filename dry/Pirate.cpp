@@ -14,7 +14,7 @@ const char* const devilFruitNames[] = {
 Pirate::Pirate() = default;
 
 
-Pirate::Pirate(const string& name, int bounty, DEVIL_FRUIT devilFruit) : name(name), bounty(bounty), devilFruit(devilFruit) {} 
+Pirate::Pirate(const string& name, int bounty, DEVIL_FRUIT devilFruit) : name(name), bounty(bounty), devilFruit(devilFruit) {}
 
 void Pirate::setName(const string& name){
     this->name = name;
@@ -45,6 +45,6 @@ DEVIL_FRUIT Pirate::getDevilFruit(){
 std::ostream &operator<<(std::ostream &os, const Pirate &pirate){
     os << pirate.name;
     os << ", Bounty: " << pirate.bounty;
-    os << pirate.name << " (Devil Fruit: " << devilFruitNames[pirate.devilFruit] << ")";
+    os << " (Devil Fruit: " << devilFruitNames[pirate.devilFruit] << ")";
     return os;
 }
