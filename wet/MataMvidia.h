@@ -8,7 +8,7 @@
 #include "Matrix.h"
 #include <string>
 
-const std::string EMPTY = "";
+const std::string EMPTY;
 
 class MataMvidia {
     unsigned int m_length;
