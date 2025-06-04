@@ -26,5 +26,6 @@ int Pirate::getBounty() const {
 
 std::ostream &operator<<(std::ostream &os, const Pirate &pirate){
     os << pirate.name;
+    os << ", Bounty: " << pirate.bounty;
     return os;
 }
