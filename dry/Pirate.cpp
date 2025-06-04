@@ -1,6 +1,8 @@
 
 #include "Pirate.h"
 
+Pirate::Pirate() = default;
+
 
 Pirate::Pirate(const string& name): name(name) {}
 
