@@ -17,20 +17,28 @@ class MataMvidia {
     std::string m_producer;
 
 public:
+    // constructors
     ~MataMvidia();
     MataMvidia(const std::string& name, const std::string& producer, const Matrix* frames, unsigned int length);
     MataMvidia(const MataMvidia& otherMovie);
+
+    // assignment operator
     MataMvidia& operator=(const MataMvidia& otherMovie);
 
-
+    // operators
     Matrix& operator[](unsigned int index);
     Matrix& operator[](unsigned int index) const; // read-only
+
+    // appending frames
     MataMvidia& operator+=(const MataMvidia& otherMovie);
     MataMvidia& operator+=(const Matrix& matrix);
 
+    // print operator
     friend std::ostream& operator<<(std::ostream& out, const MataMvidia& movie);
 
 };
+
+// appending movies (symmetry)
 
 MataMvidia operator+(const MataMvidia& movie1, const MataMvidia& movie2);
 
