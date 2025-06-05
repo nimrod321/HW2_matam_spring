@@ -4,6 +4,8 @@
 
 #include "Matrix.h"
 
+// constructors
+
 Matrix::Matrix() : m_data(nullptr), m_rows(0), m_columns(0) {}
 
 Matrix::Matrix(unsigned int rows, unsigned int columns, int initiationNumber) : m_rows(rows), m_columns(columns) {
@@ -31,6 +33,8 @@ Matrix::Matrix(const Matrix &otherMatrix) {
     }
 }
 
+// assignment operator
+
 Matrix & Matrix::operator=(const Matrix &otherMatrix) {
     if (this == &otherMatrix) {
         return *this;
@@ -47,6 +51,9 @@ Matrix & Matrix::operator=(const Matrix &otherMatrix) {
     return *this;
 }
 
+// operators
+
+// assigns value
 int & Matrix::operator()(const unsigned int i, const unsigned int j) {
     if (checkBounds(i, j)) {
         exitWithError(MatamErrorType::OutOfBounds);
@@ -54,12 +61,16 @@ int & Matrix::operator()(const unsigned int i, const unsigned int j) {
     return m_data[i * m_columns + j];
 }
 
+// read - only
+
 int & Matrix::operator()(const unsigned int i, const unsigned int j) const {
     if (checkBounds(i, j)) {
         exitWithError(MatamErrorType::OutOfBounds);
     }
     return m_data[i * m_columns + j];
 }
+
+// arithmatic operators
 
 Matrix & Matrix::operator+=(const Matrix &otherMatrix) {
     if (checkSizes(*this, otherMatrix)) {
@@ -112,6 +123,8 @@ Matrix & Matrix::operator*=(const int &scalar) {
     return *this;
 }
 
+// logic operators (made in class to avoid using friend)
+
 bool Matrix::operator==(const Matrix &otherMatrix) const {
     if (checkSizes(*this, otherMatrix)) {
         return false;
@@ -128,6 +141,8 @@ bool Matrix::operator==(const Matrix &otherMatrix) const {
 bool Matrix::operator!=(const Matrix &otherMatrix) const {
     return !(*this == otherMatrix);
 }
+
+// methods
 
 Matrix Matrix::rotateClockwise() const {
     Matrix rotatedMatrix = *this;
@@ -167,6 +182,8 @@ double Matrix::CalcFrobeniusNorm(const Matrix &matrix) {
     return std::sqrt(sum);
 }
 
+// print operator
+
 std::ostream & operator<<(std::ostream& out, const Matrix &matrix) {
     if (matrix.m_rows && matrix.m_columns) {
         for (unsigned int i = 0; i < matrix.m_rows; ++i) {
@@ -180,6 +197,8 @@ std::ostream & operator<<(std::ostream& out, const Matrix &matrix) {
 
     return out;
 }
+
+// arithmetic operators (declared outside of class)
 
 Matrix operator+(const Matrix &matrix1, const Matrix &matrix2) {
     Matrix matrix3(matrix1);

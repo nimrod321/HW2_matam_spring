@@ -4,6 +4,8 @@
 
 #include "MataMvidia.h"
 
+// constructors
+
 MataMvidia::MataMvidia(const std::string &name, const std::string &producer, const Matrix *frames,
     unsigned int length) : m_length(length), m_frames(new Matrix[m_length]), m_name(name), m_producer(producer) {
     for (unsigned int i = 0; i < m_length; i++) {
@@ -20,6 +22,12 @@ MataMvidia::MataMvidia(const MataMvidia &otherMovie) {
         m_frames[i] = otherMovie.m_frames[i];
     }
 }
+
+MataMvidia::~MataMvidia() {
+    delete[] m_frames;
+}
+
+// assignment operator
 
 MataMvidia & MataMvidia::operator=(const MataMvidia &otherMovie) {
     if (this == &otherMovie) {
@@ -40,9 +48,7 @@ MataMvidia & MataMvidia::operator=(const MataMvidia &otherMovie) {
 
 }
 
-MataMvidia::~MataMvidia() {
-    delete[] m_frames;
-}
+// operators
 
 Matrix & MataMvidia::operator[](const unsigned int index) {
     if (index >= m_length) {
@@ -57,6 +63,8 @@ Matrix & MataMvidia::operator[](const unsigned int index) const {
     }
     return m_frames[index];
 }
+
+// appending frames
 
 MataMvidia & MataMvidia::operator+=(const MataMvidia &otherMovie) {
     const unsigned int newLength = m_length + otherMovie.m_length;
@@ -90,6 +98,8 @@ MataMvidia operator+(const MataMvidia &movie1, const MataMvidia &movie2) {
     MataMvidia movie3(movie1);
     return movie3 += movie2;
 }
+
+// print operator
 
 std::ostream & operator<<(std::ostream &out, const MataMvidia &movie) {
     out << "Movie Name: " << movie.m_name << std::endl;
